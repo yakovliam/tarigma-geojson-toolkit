@@ -11,7 +11,10 @@ export function AboutPage() {
       <CardHeader>
         <CardTitle>About</CardTitle>
         <CardDescription>
-          &copy; {new Date().getFullYear()} Tarigma Corp. All rights reserved.
+          Tarigma Corporation GeoJSON toolkit is a set of tools for working with
+          GeoJSON files.
+          <br /> &copy; {new Date().getFullYear()} Tarigma Corporation All
+          rights reserved.
         </CardDescription>
       </CardHeader>
     </Card>
