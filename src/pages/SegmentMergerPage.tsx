@@ -58,7 +58,7 @@ export function SegmentMergerPage() {
 
   const [filterProperty, setFilterProperty] = useState<string | null>(null);
   const [filterPropertyValue, setFilterPropertyValue] = useState<string | null>(
-    null
+    null,
   );
 
   const [outputFeatureCollection, setOutputFeatureCollection] =
@@ -191,7 +191,7 @@ export function SegmentMergerPage() {
                     onClick={() => {
                       const blob = new Blob(
                         [JSON.stringify(outputFeatureCollection, null, 2)],
-                        { type: "application/json" }
+                        { type: "application/json" },
                       );
                       const url = URL.createObjectURL(blob);
                       const a = document.createElement("a");

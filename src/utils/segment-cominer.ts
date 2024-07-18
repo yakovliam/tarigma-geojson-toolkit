@@ -16,7 +16,7 @@ export function combineSegments({
   const targetFeatures = features.filter(
     (feature: Feature) =>
       feature.properties?.[targetPropertyName].toString() ===
-      targetPropertyValue
+      targetPropertyValue,
   );
 
   const targetFeature: Feature = {
@@ -24,7 +24,7 @@ export function combineSegments({
     geometry: {
       type: "MultiLineString",
       coordinates: targetFeatures.map(
-        (feature: Feature) => (feature.geometry as LineString).coordinates
+        (feature: Feature) => (feature.geometry as LineString).coordinates,
       ),
     },
     properties: {

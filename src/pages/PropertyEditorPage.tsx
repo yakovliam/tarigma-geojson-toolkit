@@ -40,7 +40,7 @@ export function PropertyEditorPage() {
     useState<FeatureCollection | null>(null);
   const [filterProperty, setFilterProperty] = useState<string | null>(null);
   const [targetPropertyName, setTargetPropertyName] = useState<string | null>(
-    null
+    null,
   );
   const [outputFeatureCollection, setOutputFeatureCollection] =
     useState<FeatureCollection | null>(null);
@@ -165,7 +165,7 @@ export function PropertyEditorPage() {
                     onClick={() => {
                       const blob = new Blob(
                         [JSON.stringify(outputFeatureCollection, null, 2)],
-                        { type: "application/json" }
+                        { type: "application/json" },
                       );
                       const url = URL.createObjectURL(blob);
                       const a = document.createElement("a");

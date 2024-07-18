@@ -15,7 +15,7 @@ export function rewriteProperties({
 
   const targetFeatures = features.filter(
     (feature: Feature) =>
-      feature.properties?.[targetInputPropertyName] !== undefined
+      feature.properties?.[targetInputPropertyName] !== undefined,
   );
 
   // just rename targetInputPropertyName to targetOutputPropertyName

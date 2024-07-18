@@ -1,51 +1,26 @@
-import { Tabs } from "@radix-ui/react-tabs";
-import { SegmentMergerPage } from "./pages/SegmentMergerPage";
-import { TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
-import { AboutPage } from "./pages/AboutPage";
-import { PropertyEditorPage } from "./pages/PropertyEditorPage";
-
-type TabListData = {
-  value: string;
-  label: string;
-  page: React.ReactNode;
-};
-
-const tabListData: TabListData[] = [
-  {
-    value: "segment-merger",
-    label: "Segment Merger",
-    page: <SegmentMergerPage />,
-  },
-  {
-    value: "property-editor",
-    label: "Property Editor",
-    page: <PropertyEditorPage />,
-  },
-  {
-    value: "about",
-    label: "About",
-    page: <AboutPage />,
-  },
-];
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import PanelLayout from "./components/panel/panel-layout";
+import DashboardPage from "./pages/dashboard/DashboardPage";
+import { AboutPage } from "./pages/about/AboutPage";
+import SRPGeoJsonPipelinePage from "./pages/srpgjpipeline/SRPGeoJsonPipelinePage";
 
 function App() {
-  const defaultValue = tabListData[0].value;
   return (
-    <div className="pt-16 h-screen flex items-start justify-center">
-      <Tabs defaultValue={defaultValue} className="w-[400px]">
-        <TabsList className={"grid w-full grid-cols-3"}>
-          {tabListData.map((tab) => (
-            <TabsTrigger key={tab.value} value={tab.value}>
-              {tab.label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-        {tabListData.map((tab) => (
-          <TabsContent key={tab.value} value={tab.value}>
-            {tab.page}
-          </TabsContent>
-        ))}
-      </Tabs>
+    <div>
+      <BrowserRouter>
+        <PanelLayout>
+          <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route
+              path="/srp-gj-pipeline"
+              element={<SRPGeoJsonPipelinePage />}
+            />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="*" element={<div>Not Found</div>} />{" "}
+          </Routes>
+        </PanelLayout>
+      </BrowserRouter>
     </div>
   );
 }
