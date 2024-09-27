@@ -10,7 +10,7 @@ export function formatBytes(
   opts: {
     decimals?: number;
     sizeType?: "accurate" | "normal";
-  } = {}
+  } = {},
 ) {
   const { decimals = 0, sizeType = "normal" } = opts;
 
@@ -30,7 +30,7 @@ export function formatBytes(
 export function composeEventHandlers<E>(
   originalEventHandler?: (event: E) => void,
   ourEventHandler?: (event: E) => void,
-  { checkForDefaultPrevented = true } = {}
+  { checkForDefaultPrevented = true } = {},
 ) {
   return function handleEvent(event: E) {
     originalEventHandler?.(event);
