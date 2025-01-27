@@ -7,7 +7,7 @@ type UseGeoJsonFeatureParserProps = {
 };
 
 export const useGeoJSONFeatureParser = (
-  props: UseGeoJsonFeatureParserProps,
+  props: UseGeoJsonFeatureParserProps
 ) => {
   const [featureCollection, setFeatureCollection] =
     useState<FeatureCollection | null>(null);
@@ -30,6 +30,7 @@ export const useGeoJSONFeatureParser = (
 
     // flatten the feature collection to a single array of features
     const features = featureCollections.reduce((acc, featureCollection) => {
+      console.log("featureCollection", featureCollection);
       if (!featureCollection) {
         return acc;
       }
@@ -41,6 +42,8 @@ export const useGeoJSONFeatureParser = (
       if (featureCollection.type === "FeatureCollection") {
         return acc.concat(featureCollection.features);
       }
+
+      console.error("Unknown GeoJSON type", featureCollection);
 
       return acc;
     }, []);
